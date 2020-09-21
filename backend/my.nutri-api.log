@@ -1,0 +1,14 @@
+2020-09-21T00:11:42.426Z [my.nutri-api] info: API started!
+2020-09-21T00:35:40.250Z [my.nutri-api] info: API started!
+2020-09-21T00:36:59.660Z [my.nutri-api] info: API started!
+2020-09-21T00:39:03.421Z [my.nutri-api] info: POST /nutritionists " {"name":"Jefferson","email":"nutri@gmail.com","subscription":120,"CRN":"CRN3","situation":"ATIVO","registration_Type":"NUTRICIONISTA DEFINITIVO","id":"6c65e654-769c-4077-b88f-15de10de65ea","created_at":"2020-09-21T03:39:12.780Z","updated_at":"2020-09-21T03:39:12.780Z"}
+2020-09-21T00:39:46.939Z [my.nutri-api] info: GET /nutritionists
+2020-09-21T00:43:11.446Z [my.nutri-api] info: API started!
+2020-09-21T00:46:34.090Z [my.nutri-api] info: API started!
+2020-09-21T00:49:19.685Z [my.nutri-api] info: API JWT token não informado - URL /users/280aa3e8-f33c-49e8-b553-fe311f277b00 - Method(DELETE)
+2020-09-21T00:50:19.380Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com.br
+2020-09-21T00:52:00.881Z [my.nutri-api] info: API started!
+2020-09-21T02:22:26.771Z [my.nutri-api] info: API started!
+2020-09-21T02:22:35.329Z [my.nutri-api] info: POST /forgot - " jefferson.santos@igti.com.br
+2020-09-21T02:25:26.560Z [my.nutri-api] info: API Token informado inválido. - URL /users/password/forgot/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA2NDA0NDgsImV4cCI6MTYwMDY0MTA0OCwic3ViIjoiZTFjYTJlZWQtNjY4Mi00ZTMxLTg4NjQtNGE5ZDk3NTk2YTRmIn0.4fUimo3-_0CCC75_huVMot3HIez-hjslwkp7kxEexNo - Method(PUT)
+2020-09-21T02:25:37.543Z [my.nutri-api] info: POST /forgot/token
