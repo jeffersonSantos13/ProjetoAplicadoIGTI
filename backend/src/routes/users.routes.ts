@@ -5,6 +5,8 @@ import uploadConfig from '../config/upload';
 
 import User from '../models/User';
 
+import UserProfileService from '../services/UserProfileService';
+import ChangeUserPassword from '../services/ChangeUserPassword';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 import UpdateUserPersonalInformationService from '../services/UpdatePersonalInformationUserService';
@@ -27,8 +29,10 @@ usersRouter.get('/', async (request, response) => {
 usersRouter.patch('/', ensureAuthenticated, async (request, response) => {
   const updateUser = new UpdateUserPersonalInformationService();
 
-  const user = await updateUser.execute({
+  const { user } = await updateUser.execute({
     user_id: request.user.id,
+    name: request.body.name,
+    email: request.body.email,
     height: request.body.height,
     weight: request.body.weight,
     cep: request.body.cep,
@@ -73,6 +77,32 @@ usersRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
 
   return response.send();
 });
+
+usersRouter.get('/profile', ensureAuthenticated, async (request, response) => {
+  const userService = new UserProfileService();
+
+  const userProfile = await userService.execute({
+    user_id: request.user.id,
+  });
+
+  return response.json(userProfile);
+});
+
+usersRouter.patch(
+  '/changePassword',
+  ensureAuthenticated,
+  async (request, response) => {
+    const userService = new ChangeUserPassword();
+
+    await userService.execute({
+      user_id: request.user.id,
+      password: request.body.password,
+      newPassword: request.body.newPassword,
+    });
+
+    return response.send();
+  },
+);
 
 usersRouter.patch(
   '/avatar',

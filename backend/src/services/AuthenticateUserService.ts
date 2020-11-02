@@ -3,6 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import authConfig from '../config/auth';
+import ConvertImgToBase64 from '../utils/ConvertImgToBase64';
 
 import AppError from '../errors/AppError';
 
@@ -33,6 +34,12 @@ class AuthenticateUserService {
     if (!passwordMatched) {
       throw new AppError('Email/Senha informados incorretos', 401);
     }
+
+    const image = await ConvertImgToBase64({
+      file: user.avatar,
+    });
+
+    user.avatar_url = `data:image/png;base64,${image}`;
 
     const { secret, expiresIn } = authConfig.jwt;
 

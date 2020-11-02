@@ -1,11 +1,14 @@
 import { getRepository } from 'typeorm';
 
 import AppError from '../errors/AppError';
+import ConvertImgToBase64 from '../utils/ConvertImgToBase64';
 
 import User from '../models/User';
 
 interface Request {
   user_id: string;
+  name: string;
+  email: string;
   height: number;
   weight: number;
   cep: string;
@@ -16,9 +19,15 @@ interface Request {
   uf: string;
 }
 
+interface Response {
+  user: User;
+}
+
 class UpdateUserPersonalInformationService {
   public async execute({
     user_id,
+    name,
+    email,
     height,
     weight,
     cep,
@@ -27,7 +36,7 @@ class UpdateUserPersonalInformationService {
     bairro,
     localidade,
     uf,
-  }: Request): Promise<User> {
+  }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
     const user = await usersRepository.findOne(user_id);
@@ -39,46 +48,63 @@ class UpdateUserPersonalInformationService {
       );
     }
 
-    if (!height || height < 0) {
-      throw new AppError('Altura não informado', 401);
+    if (name) {
+      user.name = name;
     }
 
-    if (!weight || weight < 0) {
-      throw new AppError('Peso não informado', 401);
+    if (email) {
+      const checkUserExists = await usersRepository.findOne({
+        where: { email },
+      });
+
+      if (checkUserExists && checkUserExists.id !== user_id) {
+        throw new AppError('Endereço de Email se encontra em uso.');
+      }
+
+      user.email = email;
     }
 
-    if (cep === '') {
-      throw new AppError('CEP não informado', 401);
+    if (height) {
+      user.height = height;
     }
 
-    if (logradouro === '') {
-      throw new AppError('Logradouro não informado', 401);
+    if (weight) {
+      user.weight = weight;
     }
 
-    if (bairro === '') {
-      throw new AppError('Bairro não informado', 401);
+    if (cep) {
+      user.cep = cep;
     }
 
-    if (localidade === '') {
-      throw new AppError('Cidade não informado', 401);
+    if (logradouro) {
+      user.logradouro = logradouro;
     }
 
-    if (uf === '') {
-      throw new AppError('UF não informado', 401);
+    if (complemento) {
+      user.complemento = complemento;
     }
 
-    user.height = height;
-    user.weight = weight;
-    user.cep = cep;
-    user.logradouro = logradouro;
-    user.complemento = complemento;
-    user.bairro = bairro;
-    user.localidade = localidade;
-    user.uf = uf;
+    if (bairro) {
+      user.bairro = bairro;
+    }
+
+    if (localidade) {
+      user.localidade = localidade;
+    }
+
+    if (uf) {
+      user.uf = uf;
+    }
 
     await usersRepository.save(user);
 
-    return user;
+    const image = await ConvertImgToBase64({
+      file: user.avatar,
+    });
+
+    user.avatar_url = `data:image/png;base64,${image}`;
+
+    return { user };
   }
 }
 

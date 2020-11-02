@@ -23,6 +23,8 @@ class User {
   @Column()
   avatar: string;
 
+  avatar_url: string;
+
   @Column()
   height: number;
 

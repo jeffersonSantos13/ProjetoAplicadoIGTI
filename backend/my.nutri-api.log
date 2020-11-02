@@ -12,3 +12,222 @@
 2020-09-21T02:22:35.329Z [my.nutri-api] info: POST /forgot - " jefferson.santos@igti.com.br
 2020-09-21T02:25:26.560Z [my.nutri-api] info: API Token informado inválido. - URL /users/password/forgot/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA2NDA0NDgsImV4cCI6MTYwMDY0MTA0OCwic3ViIjoiZTFjYTJlZWQtNjY4Mi00ZTMxLTg4NjQtNGE5ZDk3NTk2YTRmIn0.4fUimo3-_0CCC75_huVMot3HIez-hjslwkp7kxEexNo - Method(PUT)
 2020-09-21T02:25:37.543Z [my.nutri-api] info: POST /forgot/token
+2020-10-11T20:43:16.021Z [my.nutri-api] info: API started!
+2020-10-11T20:45:53.619Z [my.nutri-api] info: POST /users " Jefferson - yuiti.santos@gmail.com
+2020-10-11T20:46:09.410Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-11T21:02:33.609Z [my.nutri-api] info: API started!
+2020-10-11T21:48:52.663Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-11T23:55:39.455Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-11T23:59:44.982Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-12T00:30:07.431Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-12T00:32:24.985Z [my.nutri-api] info: POST /sessions - " yuiti.santos@gmail.com
+2020-10-12T01:35:15.102Z [my.nutri-api] info: POST /users " jefferson - jefferson@igit.com.br
+2020-10-12T01:38:02.738Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-12T01:38:19.582Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-12T01:38:24.293Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-12T01:38:42.857Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-12T01:39:31.391Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-25T00:14:20.378Z [my.nutri-api] info: API started!
+2020-10-25T00:55:15.353Z [my.nutri-api] info: API started!
+2020-10-25T01:28:00.969Z [my.nutri-api] info: GET /users
+2020-10-25T01:28:27.411Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:28:38.572Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:28:47.115Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-25T01:48:43.294Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:48:50.113Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:49:01.011Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:49:06.055Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-25T01:49:25.379Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-25T21:01:37.989Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-25T21:13:50.652Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T03:41:30.073Z [my.nutri-api] info: API started!
+2020-10-26T03:42:40.280Z [my.nutri-api] info: API started!
+2020-10-26T03:43:02.677Z [my.nutri-api] info: API started!
+2020-10-26T05:34:37.262Z [my.nutri-api] info: API started!
+2020-10-26T05:35:30.854Z [my.nutri-api] info: GET /users
+2020-10-26T05:36:59.643Z [my.nutri-api] info: API started!
+2020-10-26T05:37:12.354Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-26T05:37:18.120Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T05:37:43.787Z [my.nutri-api] info: API JWT token não informado - URL /users/profile - Method(GET)
+2020-10-26T05:40:16.436Z [my.nutri-api] info: API started!
+2020-10-26T05:40:29.365Z [my.nutri-api] info: POST /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - 299d85d962dc6e49bdd0-IMG_20180517_082255956.jpg
+2020-10-26T05:40:54.476Z [my.nutri-api] info: API started!
+2020-10-26T05:41:22.709Z [my.nutri-api] info: API started!
+2020-10-26T05:41:57.418Z [my.nutri-api] info: API started!
+2020-10-26T05:42:23.997Z [my.nutri-api] info: API started!
+2020-10-26T05:42:48.793Z [my.nutri-api] info: API started!
+2020-10-26T05:44:54.188Z [my.nutri-api] info: API started!
+2020-10-26T05:46:31.002Z [my.nutri-api] info: API started!
+2020-10-26T05:46:43.166Z [my.nutri-api] info: API started!
+2020-10-26T05:47:36.965Z [my.nutri-api] info: API started!
+2020-10-26T05:47:58.981Z [my.nutri-api] info: API started!
+2020-10-26T05:49:45.833Z [my.nutri-api] info: API started!
+2020-10-26T05:56:26.840Z [my.nutri-api] info: API started!
+2020-10-26T05:56:42.259Z [my.nutri-api] info: API started!
+2020-10-26T07:47:23.049Z [my.nutri-api] info: API Email/Senha informados incorretos - URL /sessions - Method(POST)
+2020-10-26T07:47:39.742Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T07:47:41.839Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:48:17.423Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:48:21.578Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:48:52.201Z [my.nutri-api] info: GET /users
+2020-10-26T07:49:20.765Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:50:30.008Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:51:07.217Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T07:51:09.042Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:51:33.087Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:52:08.671Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T07:54:02.754Z [my.nutri-api] info: API Token JWT inválido - URL /users/profile - Method(GET)
+2020-10-26T08:00:39.094Z [my.nutri-api] info: API started!
+2020-10-26T08:00:45.066Z [my.nutri-api] info: API Internal server error - URL /sessions - Method(POST)
+2020-10-26T08:01:00.637Z [my.nutri-api] info: API started!
+2020-10-26T08:01:01.154Z [my.nutri-api] info: API Internal server error - URL /sessions - Method(POST)
+2020-10-26T08:01:52.697Z [my.nutri-api] info: API started!
+2020-10-26T08:01:55.850Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T08:02:27.106Z [my.nutri-api] info: API started!
+2020-10-26T08:02:30.811Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-26T08:03:57.213Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-27T12:48:22.632Z [my.nutri-api] info: API started!
+2020-10-27T12:48:34.384Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-10-31T23:07:50.378Z [my.nutri-api] info: API started!
+2020-11-01T00:34:19.441Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-11-01T08:48:12.197Z [my.nutri-api] info: API Altura não informado - URL /users - Method(PATCH)
+2020-11-01T09:00:44.177Z [my.nutri-api] info: API Altura não informado - URL /users - Method(PATCH)
+2020-11-01T09:01:13.842Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-11-01T09:02:07.689Z [my.nutri-api] info: API Altura não informado - URL /users - Method(PATCH)
+2020-11-01T09:06:54.429Z [my.nutri-api] info: API started!
+2020-11-01T09:07:06.724Z [my.nutri-api] info: API started!
+2020-11-01T09:07:35.263Z [my.nutri-api] info: API started!
+2020-11-01T09:07:46.184Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T09:08:34.691Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":""}}
+2020-11-01T09:09:29.943Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":""}}
+2020-11-01T09:11:18.410Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":""}}
+2020-11-01T09:12:53.743Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"nameProfile":"jefferson Santos"}}
+2020-11-01T09:15:01.155Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"name: jefferson"}
+2020-11-01T09:16:27.011Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"name: jefferson"}
+2020-11-01T09:19:11.950Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson","height":1.72,"weight":56,"cep":"04830-290","logradouro":"Rua josé linhares 7","complemento":"A","bairro":"Jordanópolis","localidade":"São Paulo","uf":"SP"}
+2020-11-01T09:22:08.406Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"name: "}
+2020-11-01T09:23:23.434Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"name: "}
+2020-11-01T09:26:15.239Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {}
+2020-11-01T09:27:27.290Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"name: "}
+2020-11-01T09:30:46.655Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {}
+2020-11-01T09:32:52.182Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {}
+2020-11-01T09:33:54.200Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"height":1.72,"weight":56,"cep":"04830-290","logradouro":"Rua josé linhares 7","complemento":"A","bairro":"Jordanópolis","localidade":"São Paulo","uf":"SP"}
+2020-11-01T09:33:57.324Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson","height":1.72,"weight":56,"cep":"04830-290","logradouro":"Rua josé linhares 7","complemento":"A","bairro":"Jordanópolis","localidade":"São Paulo","uf":"SP"}
+2020-11-01T09:41:08.995Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"\"{ name: JJefferson }\""}
+2020-11-01T09:42:06.983Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":"\"{ name:  }\""}
+2020-11-01T09:42:23.879Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T09:44:53.233Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"bodyParameters":"\"{ \\\"name\\\": \\\"\\\" }\""}
+2020-11-01T09:46:36.659Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"bodyParameters":{"name":""}}
+2020-11-01T09:48:02.076Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T09:48:19.110Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":""}}
+2020-11-01T09:49:15.194Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson","height":1.72,"weight":56,"cep":"04830-290","logradouro":"Rua josé linhares 7","complemento":"A","bairro":"Jordanópolis","localidade":"São Paulo","uf":"SP"}
+2020-11-01T09:49:47.183Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":""}}
+2020-11-01T09:51:01.756Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"dataParse":{"name":""}}
+2020-11-01T09:51:48.860Z [my.nutri-api] info: GET /users
+2020-11-01T09:52:21.234Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"data":{"name":"Jeff"}}
+2020-11-01T09:55:09.432Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"dataParse":{"name":"Jeff"}}
+2020-11-01T09:56:03.324Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"dataParse":"{\"name\":\"jEFF\"}"}
+2020-11-01T09:57:24.136Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {}
+2020-11-01T09:57:45.075Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jeff"}
+2020-11-01T09:57:51.549Z [my.nutri-api] info: GET /users
+2020-11-01T10:16:56.271Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jeff"}
+2020-11-01T10:17:04.837Z [my.nutri-api] info: GET /users
+2020-11-01T10:17:17.682Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:17:26.064Z [my.nutri-api] info: GET /users
+2020-11-01T10:18:09.071Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"jeff"}
+2020-11-01T10:18:34.148Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"as"}
+2020-11-01T10:19:02.835Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"as"}
+2020-11-01T10:20:27.238Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"a"}
+2020-11-01T10:21:53.179Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"a"}
+2020-11-01T10:24:40.111Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"a"}
+2020-11-01T10:25:11.573Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"a"}
+2020-11-01T10:27:58.806Z [my.nutri-api] info: API started!
+2020-11-01T10:28:00.165Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson","height":1.72,"weight":56,"cep":"04830-290","logradouro":"Rua josé linhares 7","complemento":"A","bairro":"Jordanópolis","localidade":"São Paulo","uf":"SP"}
+2020-11-01T10:28:10.120Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:32:54.172Z [my.nutri-api] info: API started!
+2020-11-01T10:32:59.557Z [my.nutri-api] info: API started!
+2020-11-01T10:33:35.755Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:34:41.227Z [my.nutri-api] info: API started!
+2020-11-01T10:34:43.154Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:37:22.923Z [my.nutri-api] info: API started!
+2020-11-01T10:38:15.331Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:38:46.129Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:39:05.769Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson Santos"}
+2020-11-01T10:39:42.516Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T10:40:04.193Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson Santos"}
+2020-11-01T21:08:37.744Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:08:55.719Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:11:00.922Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:12:15.572Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:12:37.063Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:13:09.850Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-11-01T21:15:21.063Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:15:53.579Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:16:19.991Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jeffersonn"}
+2020-11-01T21:17:16.481Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:17:56.524Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:19:10.804Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:22:31.452Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:22:54.866Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:23:36.261Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:23:58.289Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:24:54.309Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:25:12.712Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:25:58.777Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":""}
+2020-11-01T21:26:22.218Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson"}
+2020-11-01T21:26:53.940Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson S"}
+2020-11-01T21:27:55.552Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:28:05.057Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:29:10.352Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:29:35.902Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:29:57.358Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:30:13.962Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:30:38.874Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:30:51.963Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:31:13.423Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:31:43.565Z [my.nutri-api] info: API Token JWT inválido - URL /users - Method(PATCH)
+2020-11-01T21:32:15.374Z [my.nutri-api] info: POST /sessions - " jefferson@igit.com.br
+2020-11-01T21:32:33.071Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"name":"Jefferson Santos"}
+2020-11-01T21:32:57.645Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"email":"jefferson@igti.com.br"}
+2020-11-01T21:46:18.393Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"email":"jefferson@igti.com"}
+2020-11-01T21:47:25.882Z [my.nutri-api] info: API started!
+2020-11-01T21:47:28.827Z [my.nutri-api] info: GET /users
+2020-11-01T21:48:48.876Z [my.nutri-api] info: API started!
+2020-11-01T21:49:16.019Z [my.nutri-api] info: API Internal server error - URL /users - Method(PATCH)
+2020-11-01T21:49:44.022Z [my.nutri-api] info: API Internal server error - URL /users - Method(PATCH)
+2020-11-01T21:50:07.630Z [my.nutri-api] info: API Internal server error - URL /users - Method(PATCH)
+2020-11-01T21:50:49.391Z [my.nutri-api] info: API started!
+2020-11-01T21:51:07.012Z [my.nutri-api] info: API Endereço de Email se encontra em uso. - URL /users - Method(PATCH)
+2020-11-01T21:51:19.321Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"email":"jefferson@igti.com"}
+2020-11-01T21:51:27.616Z [my.nutri-api] info: API Endereço de Email se encontra em uso. - URL /users - Method(PATCH)
+2020-11-01T21:51:38.487Z [my.nutri-api] info: API Endereço de Email se encontra em uso. - URL /users - Method(PATCH)
+2020-11-01T21:57:42.031Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-01T22:21:15.359Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-01T22:45:51.356Z [my.nutri-api] info: API Usuário não existe. - URL /users/password/forgot - Method(POST)
+2020-11-01T22:46:07.030Z [my.nutri-api] info: POST /forgot - " jefferson@igti.com
+2020-11-01T23:16:31.711Z [my.nutri-api] info: POST /forgot - " jefferson@igti.com
+2020-11-01T23:19:15.567Z [my.nutri-api] info: API Usuário não existe. - URL /users/password/forgot - Method(POST)
+2020-11-01T23:20:18.098Z [my.nutri-api] info: API Usuário não existe. - URL /users/password/forgot - Method(POST)
+2020-11-01T23:20:33.767Z [my.nutri-api] info: API Usuário não existe. - URL /users/password/forgot - Method(POST)
+2020-11-01T23:21:23.050Z [my.nutri-api] info: POST /forgot - " jefferson@igti.com
+2020-11-01T23:39:29.184Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-01T23:56:35.708Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-02T00:13:44.274Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-02T00:21:11.231Z [my.nutri-api] info: API started!
+2020-11-02T00:21:26.999Z [my.nutri-api] info: API started!
+2020-11-02T00:24:08.074Z [my.nutri-api] info: API started!
+2020-11-02T00:24:15.345Z [my.nutri-api] info: API started!
+2020-11-02T00:24:45.902Z [my.nutri-api] info: API started!
+2020-11-02T00:26:24.773Z [my.nutri-api] info: API started!
+2020-11-02T00:28:16.148Z [my.nutri-api] info: API started!
+2020-11-02T00:28:19.975Z [my.nutri-api] info: API Senha informada incorreta - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:28:30.178Z [my.nutri-api] info: API Senha informada incorreta - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:28:35.547Z [my.nutri-api] info: API Nova Senha não informado - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:35:39.535Z [my.nutri-api] info: API Senha informada incorreta - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:37:42.618Z [my.nutri-api] info: API Senha informada incorreta - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:38:02.950Z [my.nutri-api] info: API Senha informada incorreta - URL /users/changePassword - Method(PATCH)
+2020-11-02T00:48:15.485Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-02T00:53:10.262Z [my.nutri-api] info: POST /sessions - " jefferson@igti.com
+2020-11-02T00:59:50.510Z [my.nutri-api] info: API started!
+2020-11-02T01:00:17.798Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"weight":"58"}
+2020-11-02T01:03:00.541Z [my.nutri-api] info: PATCH /users " ID: 07fb1df9-ba66-4a09-a3d4-4b28a58ef03e - {"weight":"58"}
