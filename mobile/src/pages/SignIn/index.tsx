@@ -45,8 +45,6 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation();
 
   const { signIn, user } = useAuth();
-
-  console.log(user)
   
   const handleSignIn = useCallback(
     async (data: SignInformData) => {
@@ -120,7 +118,6 @@ const SignIn: React.FC = () => {
                 name="password"
                 icon="lock"
                 placeholder="Senha"
-                secureTextEntry
                 returnKeyType="send"
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
@@ -136,7 +133,7 @@ const SignIn: React.FC = () => {
               Entrar
             </Button>
 
-            <ForgotPassword onPress={() => {console.log('')}}>
+            <ForgotPassword onPress={() => {navigation.navigate('ForgotPassword')}}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>

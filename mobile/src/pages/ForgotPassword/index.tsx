@@ -1,4 +1,5 @@
 import React, { useRef, useCallback } from 'react';
+
 import { 
   Image, 
   View,
@@ -7,6 +8,7 @@ import {
   Platform,
   TextInput,
   Alert,
+  Text
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
@@ -26,45 +28,41 @@ import logoImg from '../../assets/logo.png';
 import { 
   Container,
   Title,
+  SubTitle,
   BackToSignIn,
   BackToSignInText,
 } from './styles';
 
-interface SignUpFormData {
-  name: string;
+interface ForgotPasswordFormData {
   email: string;
-  password: string;
 }
 
-const SignUp: React.FC = () => {
+const ForgotPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
   const emailInputRef = useRef<TextInput>(null);
-  const passwordInputRef = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback(
-    async (data: SignUpFormData) => {
+  const handleForgoPassword = useCallback(
+    async (data: ForgotPasswordFormData) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Nome obrigatório'),
           email: Yup.string()
             .required('E-mail obrigatório')
             .email('Digite um e-mail válido'),
-          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/users', data);
+        await api.post('/users/password/forgot', data);
 
         Alert.alert(
-          'Cadastro realizado com sucesso!',
-          'Você já pode fazer login na aplicação.',
+          'E-mail de recuperação de senha enviado com sucesso!',
+          'Verifique sua caixa de entrada com as informações de recuperação da senha',
         );
 
         navigation.goBack();
@@ -78,8 +76,8 @@ const SignUp: React.FC = () => {
         }
 
         Alert.alert(
-          'Erro no cadastro',
-          'Ocorreu um erro ao fazer cadastro, tente novamente.',
+          'Erro ao recuperar a senha',
+          'E-mail informado não encontrado, vefique e tente novamente.',
         );
       }
     },
@@ -99,50 +97,35 @@ const SignUp: React.FC = () => {
         >
           <Container>
             <Image source={logoImg} />
-            
+
             <View>
-              <Title>Crie sua conta</Title>
+              <Title>Esqueceu sua senha?</Title>
+              <SubTitle>
+                Digite seu E-mail e nós lhe enviaremos instruções
+                sobre como criar uma nova senha
+              </SubTitle>
             </View>
 
-            <Form ref={formRef} onSubmit={handleSignUp}>
-              <Input 
-                name="name"
-                icon="user"
-                placeholder="Nome"
-                autoCapitalize="words"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  emailInputRef.current?.focus();
-                }}
-              />
-
-              <Input 
+            <Form ref={formRef} onSubmit={handleForgoPassword}>
+              <Input
                 ref={emailInputRef}
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="email-address"
                 name="email"
                 icon="mail"
                 placeholder="E-mail"
-                keyboardType="email-address"
-                autoCorrect={false}
-                autoCapitalize="none"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
-
-              <Input
-                ref={passwordInputRef}
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => formRef.current?.submitForm()}
               />
             </Form>
-            
-            <Button onPress={() => formRef.current?.submitForm()}>
-              Entrar
+
+            <Button
+              onPress={() => {
+                formRef.current?.submitForm();
+              }}
+            >
+              Recuperar
             </Button>
           </Container>
         </ScrollView>
@@ -156,4 +139,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default ForgotPassword;
