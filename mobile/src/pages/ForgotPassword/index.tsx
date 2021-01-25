@@ -65,7 +65,7 @@ const ForgotPassword: React.FC = () => {
           'Verifique sua caixa de entrada com as informações de recuperação da senha',
         );
 
-        navigation.goBack();
+        navigation.navigate('VerifyCodePassword');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);

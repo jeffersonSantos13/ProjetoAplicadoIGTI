@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MainTabScreen from '../pages/Navigation';
 import Settings from '../pages/Settings';
 import Profile from '../pages/Profile';
+import Address from '../pages/Address';
+import CalendarDetail from '../pages/CalendarDetail';
 
 import EditUser from '../components/EditUser';
 import EditPassword from '../components/EditPassword';
@@ -30,7 +32,7 @@ const AppRoutes: React.FC = () => {
         component={Settings}
         options={{
           headerShown: true,
-          title: 'Configurar',
+          title: 'Configuração',
           headerStyle: {
             backgroundColor: '#80F26D',
           },
@@ -51,6 +53,26 @@ const AppRoutes: React.FC = () => {
         options={{
           headerShown: true,
           title: 'Minha Conta',
+          headerStyle: {
+            backgroundColor: '#80F26D',
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            textAlign: "center",
+            marginRight: 200,
+            fontSize: 18,
+            fontWeight: "600",
+            color: '#fff'
+          }
+        }}
+      />
+
+      <Drawer.Screen 
+        name="Address"
+        component={Address}
+        options={{
+          headerShown: true,
+          title: 'Endereço',
           headerStyle: {
             backgroundColor: '#80F26D',
           },
@@ -105,14 +127,27 @@ const AppRoutes: React.FC = () => {
         }}
       />
 
-    </Drawer.Navigator>
+      <Drawer.Screen 
+        name="CalendarDetail"
+        component={CalendarDetail}
+        options={{
+          headerShown: true,
+          title: 'Calendário',
+          headerStyle: {
+            backgroundColor: '#80F26D',
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            textAlign: "center",
+            marginRight: 200,
+            fontSize: 18,
+            fontWeight: "600",
+            color: '#fff'
+          }
+        }}
+      />
 
-   /*  <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={MainTabScreen} />
-      {/* <Drawer.Screen name="Home" component={DashboardStackScreen} options={{
-        title: 'Home'
-      }}/> 
-    </Drawer.Navigator> }*/
+    </Drawer.Navigator>
   );
 };
 

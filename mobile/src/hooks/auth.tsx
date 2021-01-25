@@ -6,6 +6,11 @@ import React, {
   useEffect,
 } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Platform } from 'react-native';
+
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
+
 import api from '../services/api';
 
 interface User {
@@ -14,7 +19,20 @@ interface User {
   name: string;
   weight: number;
   height: number;
+  first_login: boolean;
   avatar_url: string;
+  gender: string;
+  desire_weight: number;
+  sub: string;
+  providerId: string;
+  cep: string;
+  logradouro: string;
+  complemento: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+  age: number;
+  phone: string;
 }
 
 interface AuthState {
@@ -36,6 +54,10 @@ interface ChangePassword {
   data: object;
 }
 
+interface ChangeAvatar {
+  image: string;
+}
+
 interface AuthContextData {
   user: User;
   loading: boolean;
@@ -43,6 +65,9 @@ interface AuthContextData {
   signOut(): void;
   handleUpdateUser(profile: Profile): void;
   handleChangeUserPassword(credentials: ChangePassword): void;
+  handleSendPhotoAvatar(avatar: ChangeAvatar): void;
+  googleSignIn(): void;
+  handleDeleteUser(): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -99,7 +124,7 @@ const AuthProvider: React.FC = ({ children }) => {
       '@FitLife:token',
       '@FitLife:user',
     ]);
-    console.log(data)
+    
     const response = await api.patch('/users', data, {
       headers: {
         'Authorization': `Bearer ${token[1]}`
@@ -108,6 +133,29 @@ const AuthProvider: React.FC = ({ children }) => {
     
     await AsyncStorage.multiSet([
       ['@FitLife:token', token[1]],
+      ['@FitLife:user', JSON.stringify(user)],
+    ]);
+    
+    setData({ token: token[1], user: response.data });
+  }, []);
+
+  const handleSendPhotoAvatar = useCallback(async ({ image }) => {
+    const [token, user] = await AsyncStorage.multiGet([
+      '@FitLife:token',
+      '@FitLife:user',
+    ]);
+
+    const formData = new FormData();
+
+    formData.append('fileimage', image);
+
+    const response = await api.patch('users/avatar', formData, {
+      headers: {
+        "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+        },
+    });
+    
+    await AsyncStorage.multiSet([
       ['@FitLife:user', JSON.stringify(user)],
     ]);
     
@@ -125,7 +173,90 @@ const AuthProvider: React.FC = ({ children }) => {
         'Authorization': `Bearer ${token[1]}`
       }
     });
-  }, []);  
+  }, []);
+
+  const handleDeleteUser = useCallback(async ({ data }) => {
+    const [token] = await AsyncStorage.multiGet([
+      '@FitLife:token',
+    ]);
+
+    await api.delete('/users', {
+      headers: {
+        'Authorization': `Bearer ${token[1]}`
+      }
+    });
+
+    signOut();
+  }, []); 
+
+  const googleSignIn = useCallback(async () => {
+    try {
+      const { idToken } = await GoogleSignin.signIn();
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      const { additionalUserInfo } = await auth().signInWithCredential(googleCredential);
+      const { email, name, picture, sub } = additionalUserInfo.profile;
+      const { providerId } = additionalUserInfo;
+
+      let avatar = false;
+
+      const verifyUserExists = await api.get('users/oauth', {
+       params: {
+        email,
+        providerId
+       }
+      });
+
+      const { name: nameProfile } = verifyUserExists.data;
+      console.log(nameProfile)
+      if (typeof nameProfile === undefined) {
+        await api.post('users/oauth', {
+          email,
+          password: sub,
+          name,
+          sub,
+          providerId,
+        });
+
+        avatar = true;
+      }
+
+      const response = await api.post('sessions/oauth', {
+        email,
+        password: sub,
+        sub,
+        providerId
+      });
+
+      let { token, user } = response.data;
+
+      if (avatar) {
+        let formData = new FormData();
+        formData.append("fileimage", picture);
+
+        const res = await api.patch('users/avatar', formData, {
+          headers: {
+            "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+            "Authorization": `Bearer ${token}`,
+           },
+        });
+      }
+  
+      await AsyncStorage.multiSet([
+        ['@FitLife:token', token],
+        ['@FitLife:user', JSON.stringify(user)],
+        ['@FitLife:oauth', idToken],
+      ]);
+  
+      api.defaults.headers.authorization = `Bearer ${token}`;
+  
+      setData({ token, user });
+
+    } catch(error) {
+      console.log({error});
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={
@@ -135,7 +266,10 @@ const AuthProvider: React.FC = ({ children }) => {
         signIn, 
         signOut,
         handleUpdateUser,
-        handleChangeUserPassword 
+        handleChangeUserPassword,
+        handleSendPhotoAvatar,
+        googleSignIn,
+        handleDeleteUser,
       }
     }>
       {children}

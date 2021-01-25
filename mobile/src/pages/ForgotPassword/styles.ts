@@ -14,6 +14,7 @@ export const Title = styled.Text`
   color: #fff;
   font-family: 'RobotoSlab-Medium';
   margin: 64px 0 10px;
+  text-align: center;
 `;
 
 export const SubTitle = styled.Text`
@@ -21,6 +22,7 @@ export const SubTitle = styled.Text`
   color: #fff;
   font-family: 'RobotoSlab-Regular';
   margin-bottom: 24px;
+  text-align: center;
 `;
 
 export const BackToSignIn = styled.TouchableOpacity`

@@ -3,6 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 interface ButtonProps {
   iconProfile: string;
+  changeColor: string;
 }
 
 export const Container = styled(RectButton)`
@@ -22,6 +23,12 @@ export const ButtonText = styled.Text<ButtonProps>`
     !!props.iconProfile &&
     css`
       margin-left: 20px;
+    `}
+
+  ${props => 
+    !!props.changeColor &&
+    css`
+      color: ${props.changeColor};
     `}
 `;
 

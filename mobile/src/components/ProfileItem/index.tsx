@@ -14,9 +14,10 @@ interface ButtonProps extends RectButtonProperties {
   children: string;
   iconProfile: string;
   user: string | number;
+  changeColor: string;
 };
 
-const ProfileItem: React.FC<ButtonProps> = ({ children, iconProfile, user, ...rest }) => (
+const ProfileItem: React.FC<ButtonProps> = ({ children, iconProfile, user, changeColor = '', ...rest }) => (
   <Container {...rest}>
     {!!iconProfile ?
       <Icon name={iconProfile} color="#44C52F" size={26} />
@@ -25,6 +26,7 @@ const ProfileItem: React.FC<ButtonProps> = ({ children, iconProfile, user, ...re
     }
     <ButtonText
       iconProfile={iconProfile}
+      changeColor={changeColor}
     >
       {children}
     </ButtonText>

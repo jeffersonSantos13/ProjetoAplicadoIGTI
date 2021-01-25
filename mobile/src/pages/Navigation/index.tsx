@@ -4,8 +4,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Dashboard from '../Dashboard';
-import Appointment from '../Appointment';
-import Search from '../Search';
+import Schedule from '../Schedule';
+import Nutritionits from '../Nutritionits';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -30,22 +30,22 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Search"
-      component={Search}
+      name="Nutricionistas"
+      component={Nutritionits}
       options={{
-        tabBarLabel: 'Buscar',
+        tabBarLabel: 'Nutricionistas',
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-search-sharp" color={color} size={26} />
+          <Icon name="nutrition-outline" color={color} size={26} />
         ),
       }}
     />
     <Tab.Screen
-      name="Appointment"
-      component={Appointment}
+      name="Schedule"
+      component={Schedule}
       options={{
         tabBarLabel: 'Calendário',
         tabBarIcon: ({ color }) => (
-          <Icon name="calendar-sharp" color={color} size={26} />
+          <Icon name="calendar-outline" color={color} size={26} />
         ),
       }}
     />

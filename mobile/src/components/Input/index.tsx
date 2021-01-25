@@ -92,7 +92,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
         }}
 
         secureTextEntry = { 
-        fieldName.includes("password") || fieldName.includes("newPassword") ? 
+        fieldName.includes("password") || fieldName.includes("newPassword") || fieldName.includes("confirmPassword") ? 
           !isVisible 
         : 
           undefined
@@ -100,7 +100,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
         {...rest} 
       />
 
-      {fieldName && fieldName.includes("password") || fieldName.includes("newPassword")  ?
+      {fieldName && fieldName.includes("password") || fieldName.includes("newPassword") || fieldName.includes("confirmPassword") ?
         <Iconicons
           name={!isVisible ? "eye-sharp" : "eye-off-sharp"}
           size={26}

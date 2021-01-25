@@ -1,4 +1,4 @@
-import React, { useCallback, useRef }  from 'react';
+import React, { useCallback, useRef, useEffect }  from 'react';
 import { 
   Image, 
   View,
@@ -11,9 +11,12 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 import { Form } from  '@unform/mobile';
 import { FormHandles } from '@unform/core';
+
+import { GoogleSocialButton } from "react-native-social-buttons";
 
 import { useAuth } from '../../hooks/auth';
 
@@ -44,7 +47,13 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const { signIn, user } = useAuth();
+  const { signIn, user, googleSignIn } = useAuth();
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '873434789431-6feft9dh60425ev3t8ip2nc7phqaed6e.apps.googleusercontent.com'
+    });
+  }, [])
   
   const handleSignIn = useCallback(
     async (data: SignInformData) => {
@@ -77,7 +86,7 @@ const SignIn: React.FC = () => {
 
         Alert.alert(
           'Erro na autenticação', 
-          'Ocorreu um erro ao fazer login, cheque as creddenciais.',
+          'Ocorreu um erro ao fazer login, cheque as credenciais.',
         );
       }
   }, [signIn]);
@@ -94,7 +103,15 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} />
+            <Image 
+              source={logoImg} 
+              style={{
+                height: 250,
+                width: 250,
+                marginBottom: -60,
+                marginTop: 40
+              }}
+            />
 
             <View>
               <Title>Faça seu logon</Title>
@@ -136,6 +153,13 @@ const SignIn: React.FC = () => {
             <ForgotPassword onPress={() => {navigation.navigate('ForgotPassword')}}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
+            
+            {Platform.OS === 'android' ? (
+              <GoogleSocialButton 
+                onPress={googleSignIn}
+              />
+            )
+            : null }
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>

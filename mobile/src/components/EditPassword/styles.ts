@@ -20,7 +20,9 @@ export const SaveButtom = styled.View`
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: 100%;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
 `;
 
 export const SaveChangeProfileIcon = styled(RectButton)`

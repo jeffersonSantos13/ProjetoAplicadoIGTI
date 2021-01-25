@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  Text, 
   ScrollView,
-  Image
+  Image,
+  Text,
+  TouchableOpacity,
 } from 'react-native';
 
 import { 
@@ -11,13 +12,19 @@ import {
   NavigationState
 } from 'react-navigation';
 
+import Modal from 'react-native-modal';
+import ImagePicker from 'react-native-image-crop-picker';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import { ActionSheet, Root } from 'native-base';
+
 import { useAuth } from '../../hooks/auth';
 
 import ProfileItem from '../../components/ProfileItem';
 
 import { 
   Container,
-  ImageProfile
+  ImageProfile,
 } from './styles';
 
 import {
@@ -25,6 +32,11 @@ import {
   ProfileTitleText,
   ProfileContainer,
   ProfileConfigurationTitle,
+  ModalView,
+  ModalText,
+  ModalButtonView,
+  ModalButtonContainer,
+  ModalButtonText
 } from '../../styles/global';
 
 import noImage from '../../assets/no-image.png';
@@ -34,7 +46,53 @@ interface Props {
 }
 
 const Profile: React.FC<Props> = ({ navigation }) => {
-  const { user } = useAuth();
+  const { user, handleSendPhotoAvatar, handleDeleteUser } = useAuth();
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const takePhotoFromCamera = async () => {
+    await ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+      includeBase64: true,
+    }).then(image => {
+      handleSendPhotoAvatar({ image: image.path });
+    });
+  };
+
+  const choosePohotFromLibrary = async () => {
+    await ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+      includeBase64: true,
+    }).then(image => {
+      handleSendPhotoAvatar({ image: image.path });
+    });
+  };
+
+  const changeProfileAvatar = async () => {
+    const BUTTON = ["Tirar Foto", "Escolher Foto na biblioteca", "Cancelar"];
+    ActionSheet.show(
+      {options: BUTTON, cancelButtonIndex: 2, title: "Selecione uma Foto"},
+      async buttonIndex => {
+        switch (buttonIndex) {
+          case 0:
+            await takePhotoFromCamera();
+            break;
+          case 1:
+            await choosePohotFromLibrary();
+            break;
+          default:
+            break;
+        }
+      }
+    )
+  };
 
   return (
     <ScrollView
@@ -42,7 +100,9 @@ const Profile: React.FC<Props> = ({ navigation }) => {
       contentContainerStyle={{ flex: 1 }}
     >
       <Container>
-        <ImageProfile>
+        <ImageProfile
+          
+        >
           <Image 
             style={{
               width: 100,
@@ -58,11 +118,18 @@ const Profile: React.FC<Props> = ({ navigation }) => {
             <ProfileTitleText>
               {user.name}
             </ProfileTitleText>
-            <Text>
-              Ver perfil
-            </Text>
+            <Root>
+              <Text>Alterar Imagem</Text>
+              <Icon
+                onPress={changeProfileAvatar}
+                name="camera-outline"
+                color="#44C52F"
+                size={26}
+              />
+            </Root>
           </ProfileTitle>
         </ImageProfile>
+
         <ProfileContainer>
           <ProfileConfigurationTitle>
             Informações da Conta 
@@ -111,7 +178,7 @@ const Profile: React.FC<Props> = ({ navigation }) => {
               })
             }}
           >
-            Peso
+            Altura
           </ProfileItem>
 
           <ProfileItem 
@@ -132,6 +199,56 @@ const Profile: React.FC<Props> = ({ navigation }) => {
 
           <ProfileItem 
             iconProfile=""
+            user={user.gender == 'male' ? "Masculino" : "Feminino"}
+            onPress={() => {
+              navigation.navigate("EditUser", { 
+                profile: user.gender,
+                title: "Editar Peso",
+                placeholder: "Ex: Masculino",
+                inputTitle: "Sexo",
+                nameProfile: "gender",
+                combo: true,
+                option: 'gender',
+              })
+            }}
+          >
+            Sexo
+          </ProfileItem>
+
+          <ProfileItem 
+            iconProfile=""
+            user={user.age}
+            onPress={() => {
+              navigation.navigate("EditUser", { 
+                profile: user.age,
+                title: "Editar Idade",
+                placeholder: "21",
+                inputTitle: "Idade",
+                nameProfile: "age",
+              })
+            }}
+          >
+            Idade
+          </ProfileItem>
+
+          <ProfileItem 
+            iconProfile=""
+            user={user.phone}
+            onPress={() => {
+              navigation.navigate("EditUser", { 
+                profile: user.phone,
+                title: "Editar Telefone",
+                placeholder: "(11) 9 9999-9999",
+                inputTitle: "Telefone",
+                nameProfile: "phone",
+              })
+            }}
+          >
+            Telefone
+          </ProfileItem>
+
+          <ProfileItem 
+            iconProfile=""
             user=""
             onPress={() => navigation.navigate("EditPassword")}
           >
@@ -143,22 +260,47 @@ const Profile: React.FC<Props> = ({ navigation }) => {
           <ProfileConfigurationTitle>
             Gerenciamento da conta
           </ProfileConfigurationTitle>
-          <ProfileItem 
-            iconProfile=""
-            user=""
-            onPress={() => console.log("Desativar")}
-          >
-            Desativar conta
-          </ProfileItem>
 
           <ProfileItem 
             iconProfile=""
             user=""
-            onPress={() => console.log("Excluir")}
+            changeColor="#f00"
+            onPress={toggleModal}
           >
             Excluír conta
           </ProfileItem>
         </ProfileContainer>
+
+        <Modal 
+          isVisible={isModalVisible}
+        >
+          <ModalView>
+            <ModalText>Deseja realmente excluír sua conta?</ModalText>
+            
+            <ModalButtonView>
+
+              <TouchableOpacity
+                onPress={handleDeleteUser}
+              >
+                <ModalButtonContainer>
+                  <ModalButtonText>
+                    Excluir
+                  </ModalButtonText>
+                </ModalButtonContainer>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={toggleModal}
+              >
+                <ModalButtonContainer>
+                  <ModalButtonText>
+                    Cancelar
+                  </ModalButtonText>
+                </ModalButtonContainer>
+              </TouchableOpacity>
+            </ModalButtonView>
+          </ModalView>
+        </Modal>
 
       </Container>
     </ScrollView>
