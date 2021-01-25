@@ -30,27 +30,31 @@ class SendForgotPassowrdEmailService {
 
     const { secret, expiresIn } = config.token;
 
-    const jwtTokenMail = sign({}, secret, {
+    const token = sign({}, secret, {
       subject: checkUserExists.id,
       expiresIn,
     });
+
+    const code = Math.random().toString().slice(-6);
 
     const checkUserTokenExists = await userToken.findOne({
       where: { user_id: checkUserExists.id },
     });
 
     if (checkUserTokenExists) {
-      checkUserTokenExists.token = jwtTokenMail;
+      checkUserTokenExists.token = token;
+      checkUserTokenExists.codeToken = code;
 
       await userToken.save(checkUserTokenExists);
     } else {
       await userToken.save({
         user_id: checkUserExists.id,
-        token: jwtTokenMail,
+        token,
+        codeToken: code,
       });
     }
 
-    if (!jwtTokenMail) {
+    if (!code) {
       throw new AppError(
         'Não foi possível criar o Token de recuperação de senha.',
         401,
@@ -60,7 +64,7 @@ class SendForgotPassowrdEmailService {
     await ForgotPasswordMail.handle({
       email,
       user: checkUserExists,
-      token: jwtTokenMail,
+      token: code,
     });
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
 
 import AppError from '../errors/AppError';
@@ -17,6 +18,10 @@ interface Request {
   bairro: string;
   localidade: string;
   uf: string;
+  gender: string;
+  desire_weight: number;
+  age: number;
+  phone: string;
 }
 
 interface Response {
@@ -36,6 +41,10 @@ class UpdateUserPersonalInformationService {
     bairro,
     localidade,
     uf,
+    gender,
+    desire_weight,
+    phone,
+    age,
   }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
@@ -46,10 +55,6 @@ class UpdateUserPersonalInformationService {
         'Apenas usuário autenticado pode alterar as informações pessoais',
         401,
       );
-    }
-
-    if (name) {
-      user.name = name;
     }
 
     if (email) {
@@ -64,45 +69,35 @@ class UpdateUserPersonalInformationService {
       user.email = email;
     }
 
-    if (height) {
-      user.height = height;
-    }
+    if (name) user.name = name;
+    if (height) user.height = height;
+    if (weight) user.weight = weight;
+    if (cep) user.cep = cep;
+    if (logradouro) user.logradouro = logradouro;
+    if (complemento) user.complemento = complemento;
+    if (bairro) user.bairro = bairro;
+    if (localidade) user.localidade = localidade;
+    if (uf) user.uf = uf;
+    if (gender) user.gender = gender;
+    if (desire_weight) user.desire_weight = desire_weight;
+    if (phone) user.phone = phone;
+    if (age) user.age = age;
 
-    if (weight) {
-      user.weight = weight;
-    }
-
-    if (cep) {
-      user.cep = cep;
-    }
-
-    if (logradouro) {
-      user.logradouro = logradouro;
-    }
-
-    if (complemento) {
-      user.complemento = complemento;
-    }
-
-    if (bairro) {
-      user.bairro = bairro;
-    }
-
-    if (localidade) {
-      user.localidade = localidade;
-    }
-
-    if (uf) {
-      user.uf = uf;
-    }
+    user.first_login = false;
 
     await usersRepository.save(user);
 
-    const image = await ConvertImgToBase64({
-      file: user.avatar,
-    });
+    user.avatar_url = user.avatar;
 
-    user.avatar_url = `data:image/png;base64,${image}`;
+    if (!user.avatar.includes('http') || user.avatar.includes('IMG')) {
+      const imageProfile = user.avatar ? user.avatar : 'profile.png';
+
+      const image = await ConvertImgToBase64({
+        file: imageProfile,
+      });
+
+      user.avatar_url = `data:image/png;base64,${image}`;
+    }
 
     return { user };
   }

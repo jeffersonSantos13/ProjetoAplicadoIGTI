@@ -3,6 +3,9 @@ import { Router } from 'express';
 import multer from 'multer';
 import uploadConfig from '../config/upload';
 
+import { IsNull, Not } from "typeorm";
+
+
 import User from '../models/User';
 
 import UserProfileService from '../services/UserProfileService';
@@ -10,6 +13,8 @@ import ChangeUserPassword from '../services/ChangeUserPassword';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 import UpdateUserPersonalInformationService from '../services/UpdatePersonalInformationUserService';
+import UpdateFirstLogin from '../services/UpdateFirstLogin';
+import CreateUserOauth from '../services/CreateUserOauth';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticared';
 
@@ -19,9 +24,43 @@ const upload = multer(uploadConfig);
 usersRouter.get('/', async (request, response) => {
   const usersRepository = getRepository(User);
 
+  /* where: {
+    nutritionist_id: Not(IsNull()),
+  }, */
+
   const user = await usersRepository.find();
 
   global.logger.info(`GET /users`);
+
+  return response.json(user);
+});
+
+usersRouter.get('/nutritionists', async (request, response) => {
+  const usersRepository = getRepository(User);
+
+  const user = await usersRepository.find({
+    relations: ['nutritionist'],
+    select: [
+      'id',
+      'name',
+      'email',
+      'avatar',
+      'cep',
+      'logradouro',
+      'complemento',
+      'bairro',
+      'localidade',
+      'uf',
+      'gender',
+      'phone',
+      'age',
+    ],
+    where: {
+      nutritionist_id: Not(IsNull()),
+    },
+  });
+
+  global.logger.info(`GET /users/nutritionists`);
 
   return response.json(user);
 });
@@ -41,6 +80,10 @@ usersRouter.patch('/', ensureAuthenticated, async (request, response) => {
     bairro: request.body.bairro,
     localidade: request.body.localidade,
     uf: request.body.uf,
+    gender: request.body.gender,
+    desire_weight: request.body.desire_weight,
+    phone: request.body.phone,
+    age: request.body.age,
   });
 
   delete user.password;
@@ -70,10 +113,49 @@ usersRouter.post('/', async (request, response) => {
   return response.json(user);
 });
 
-usersRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+usersRouter.get('/oauth', async (request, response) => {
+  const { email, providerId } = request.query;
+
   const usersRepository = getRepository(User);
 
-  await usersRepository.delete(request.params.id);
+  const user = await usersRepository.find({
+    where: {
+      email,
+      providerId,
+    },
+  });
+
+  delete user.password;
+
+  global.logger.info(`GET /users/oauth " ${request.params}`);
+
+  return response.json(user);
+});
+
+usersRouter.post('/oauth', async (request, response) => {
+  const { name, email, password, sub, providerId } = request.body;
+
+  const createUser = new CreateUserOauth();
+
+  const user = await createUser.execute({
+    name,
+    email,
+    password,
+    sub,
+    providerId,
+  });
+
+  delete user.password;
+
+  global.logger.info(`POST /users/oauth " ${name} - ${email}`);
+
+  return response.json(user);
+});
+
+usersRouter.delete('/', ensureAuthenticated, async (request, response) => {
+  const usersRepository = getRepository(User);
+
+  await usersRepository.delete(request.user.id);
 
   return response.send();
 });
@@ -111,16 +193,22 @@ usersRouter.patch(
   async (request, response) => {
     const updateUserAvatar = new UpdateUserAvatarService();
 
+    let avatar = '';
+
+    if (request.file !== undefined) {
+      avatar = request.file.filename;
+    } else {
+      avatar = request.body.fileimage;
+    }
+
     const user = await updateUserAvatar.execute({
       user_id: request.user.id,
-      avatarFilename: request.file.filename,
+      avatarFilename: avatar,
     });
 
     delete user.password;
 
-    global.logger.info(
-      `POST /users " ID: ${request.user.id} - ${request.file.filename}`,
-    );
+    global.logger.info(`PATCH /users " ID: ${request.user.id}`);
 
     return response.json(user);
   },

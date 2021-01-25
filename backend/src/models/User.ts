@@ -1,10 +1,15 @@
+/* eslint-disable camelcase */
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+
+import Nutritionist from './Nutritionist';
 
 @Entity('users')
 class User {
@@ -32,6 +37,12 @@ class User {
   weight: number;
 
   @Column()
+  age: number;
+
+  @Column()
+  phone: string;
+
+  @Column()
   cep: string;
 
   @Column()
@@ -48,6 +59,28 @@ class User {
 
   @Column()
   uf: string;
+
+  @Column()
+  first_login: boolean;
+
+  @Column()
+  gender: string;
+
+  @Column()
+  desire_weight: number;
+
+  @Column()
+  sub: string;
+
+  @Column()
+  providerId: string;
+
+  @Column()
+  nutritionist_id?: string;
+
+  @ManyToOne(() => Nutritionist)
+  @JoinColumn({ name: 'nutritionist_id' })
+  nutritionist: Nutritionist;
 
   @CreateDateColumn()
   created_at: Date;

@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import SendForgotPassowrdEmailService from '../services/SendForgotPasswordEmailService';
 import ResetPasswordUserService from '../services/ResetPasswordUserService';
+import VerifyTokenIsvalid from '../services/VerifyTokenIsvalid';
 
 const passwordRouter = Router();
 
@@ -17,11 +18,22 @@ passwordRouter.post('/forgot', async (request, response) => {
   return response.send();
 });
 
-passwordRouter.put('/forgot/:token', async (request, response) => {
+passwordRouter.post('/forgot/code', async (request, response) => {
+  const verifyTokenIsvalid = new VerifyTokenIsvalid();
+
+  const user = await verifyTokenIsvalid.execute({
+    code: request.body.code,
+  });
+
+  return response.json(user);
+});
+
+passwordRouter.put('/forgot/:user_id', async (request, response) => {
   const resetPasswordUser = new ResetPasswordUserService();
 
   const user = await resetPasswordUser.execute({
-    token: request.params.token,
+    user_id: request.params.user_id,
+    user: request.body.user,
     password: request.body.password,
     confirmPassword: request.body.confirmPassword,
   });

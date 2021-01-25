@@ -1,5 +1,5 @@
+/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
-import { verify } from 'jsonwebtoken';
 import { hash } from 'bcryptjs';
 
 import AppError from '../errors/AppError';
@@ -7,53 +7,31 @@ import AppError from '../errors/AppError';
 import User from '../models/User';
 import UserToken from '../models/UserToken';
 
-import config from '../config/mail';
-
 interface Request {
-  token: string;
+  user_id: string;
+  user: User;
   password: string;
   confirmPassword: string;
 }
 
-interface TokenPayLoad {
-  iat: number;
-  exp: number;
-  sub: string;
-}
-
 class ResetPasswordUserService {
   public async execute({
-    token,
+    user_id,
+    user,
     password,
     confirmPassword,
   }: Request): Promise<User> {
     const userTokenRepository = getRepository(UserToken);
 
     const checkTokenExists = await userTokenRepository.findOne({
-      where: { token },
+      where: { user_id },
     });
 
     if (!checkTokenExists) {
-      throw new AppError('Token informado inválido.');
+      throw new AppError('Código informado inválido.');
     }
-
-    try {
-      verify(token, config.token.secret);
-    } catch (err) {
-      throw new AppError('Token de recuperação de senha expirado.');
-    }
-
-    const decoded = verify(token, config.token.secret);
-
-    const { sub: id } = decoded as TokenPayLoad;
 
     const usersRepository = getRepository(User);
-
-    const user = await usersRepository.findOne(id);
-
-    if (!user) {
-      throw new AppError('Usuário não existe.');
-    }
 
     if (password === '') {
       throw new AppError('Nova senha não informada');

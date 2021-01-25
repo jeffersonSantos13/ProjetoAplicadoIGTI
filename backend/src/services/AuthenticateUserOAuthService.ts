@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import path from 'path';
 
 import authConfig from '../config/auth';
 import ConvertImgToBase64 from '../utils/ConvertImgToBase64';
@@ -12,6 +13,8 @@ import User from '../models/User';
 interface Request {
   email: string;
   password: string;
+  sub: string;
+  providerId: string;
 }
 
 interface Response {
@@ -19,8 +22,13 @@ interface Response {
   token: string;
 }
 
-class AuthenticateUserService {
-  public async execute({ email, password }: Request): Promise<Response> {
+class AuthenticateUserOAuthService {
+  public async execute({
+    email,
+    password,
+    sub,
+    providerId,
+  }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
     const user = await usersRepository.findOne({ where: { email } });
@@ -35,13 +43,21 @@ class AuthenticateUserService {
       throw new AppError('Email/Senha informados incorretos', 401);
     }
 
-    const imageProfile = user.avatar ? user.avatar : 'profile.png';
+    if (user.sub !== sub || user.providerId !== providerId) {
+      throw new AppError('Email/Senha informados incorretos', 401);
+    }
 
-    const image = await ConvertImgToBase64({
-      file: imageProfile,
-    });
+    user.avatar_url = user.avatar;
 
-    user.avatar_url = `data:image/png;base64,${image}`;
+    if (path.extname(user.avatar).includes('jpg, png')) {
+      const imageProfile = user.avatar ? user.avatar : 'profile.png';
+
+      const image = await ConvertImgToBase64({
+        file: imageProfile,
+      });
+
+      user.avatar_url = `data:image/png;base64,${image}`;
+    }
 
     const { secret, expiresIn } = authConfig.jwt;
 
@@ -57,4 +73,4 @@ class AuthenticateUserService {
   }
 }
 
-export default AuthenticateUserService;
+export default AuthenticateUserOAuthService;

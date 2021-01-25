@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
 import AppError from '../errors/AppError';
 
 import Nutritionist from '../models/Nutritionist';
+import User from '../models/User';
 
 interface Request {
   name: string;
@@ -26,12 +28,21 @@ class CreateUserService {
     registration_Type,
   }: Request): Promise<Nutritionist> {
     const nutritionistRepository = getRepository(Nutritionist);
+    const usersRepository = getRepository(User);
 
     const checkNutritionistExists = await nutritionistRepository.findOne({
       where: { email },
     });
 
     if (checkNutritionistExists) {
+      throw new AppError('Endereço de Email se encontra em uso.');
+    }
+
+    const checkUserExists = await usersRepository.findOne({
+      where: { email },
+    });
+
+    if (checkUserExists) {
       throw new AppError('Endereço de Email se encontra em uso.');
     }
 
@@ -47,7 +58,16 @@ class CreateUserService {
       registration_Type,
     });
 
-    await nutritionistRepository.save(nutritionist);
+    const newNutritionist = await nutritionistRepository.save(nutritionist);
+
+    const user = usersRepository.create({
+      name,
+      email,
+      password: hashedPassoword,
+      nutritionist_id: newNutritionist.id,
+    });
+
+    await usersRepository.save(user);
 
     return nutritionist;
   }

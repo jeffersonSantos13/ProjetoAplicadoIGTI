@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
 import { Router } from 'express';
 

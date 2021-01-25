@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
@@ -10,15 +9,17 @@ interface Request {
   name: string;
   email: string;
   password: string;
-  nutritionist_id?: string;
+  sub: string;
+  providerId: string;
 }
 
-class CreateUserService {
+class CreateUserOauth {
   public async execute({
     name,
     email,
     password,
-    nutritionist_id = '',
+    sub,
+    providerId,
   }: Request): Promise<User> {
     const usersRepository = getRepository(User);
 
@@ -36,7 +37,8 @@ class CreateUserService {
       name,
       email,
       password: hashedPassoword,
-      nutritionist_id: nutritionist_id ? nutritionist_id : null,
+      sub,
+      providerId,
     });
 
     await usersRepository.save(user);
@@ -45,4 +47,4 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService;
+export default CreateUserOauth;

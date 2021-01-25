@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
@@ -22,7 +23,11 @@ class UpdateUserAvatarService {
       throw new AppError('Only authenticated users can change avatar.', 401);
     }
 
-    if (user.avatar) {
+    if (
+      user.avatar &&
+      user.avatar.includes('IMG') &&
+      !user.avatar.includes('http')
+    ) {
       // Deletar avatar anterior
 
       const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
@@ -36,6 +41,8 @@ class UpdateUserAvatarService {
     user.avatar = avatarFilename;
 
     await usersRepository.save(user);
+
+    user.avatar_url = user.avatar;
 
     return user;
   }
